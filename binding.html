@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Binding</title>
+    <style >
+        .textColor{
+            color: red;
+        }
+        .btnColor{
+            background-color: red;
+            border: none;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .btnColor:hover {
+            background-color: rgb(153, 144, 144);
+        }
+        .btnLink{
+            text-decoration: none;
+            color: #fff;
+        }
+        .btnLink:hover {
+            color: rgb(182, 35, 35);
+        }
+        .textLineThrough{
+            text-decoration: line-through;
+        }
+        img{
+            width: 250px;
+            border-radius: 5%;
+            transition: all 2s;
+        }
+        img:hover {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="bind">
+        <h4 :class="[textColor]">{{message1}}</h4>
+        <h4 :class="[textColor,textLineThrough]">{{message1}}</h4>
+        <input  type="text" v-model='inpt1' title="for input text binding"> <br> <br>
+        <button :class="[btnColor]"> <a :href="vueJsLink"  :class="btnLink" target="_blank">Vue Js</a> </button>
+        <input disabled type="text" v-model='inpt1' title="for input text binding"> <br> <br>
+        <img  :src="imgLink" alt=""> <br><br>
+        <span :title="pptDev">I am a Fullstack Developer</span>
+        <input type="text" :disabled="inptDisabld" placeholder="Disabled binding">
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script >
+    let app = new Vue ({
+        el:'#bind',
+        data:{
+            message1 : 'Binding ....',
+            inpt1: ' Input form text binding....',
+            textColor:'textColor',
+            btnColor : 'btnColor',
+            textLineThrough: 'textLineThrough',
+            vueJsLink:'https://v2.vuejs.org/v2/guide/',
+            btnLink:'btnLink',
+            imgLink : 'img/taylorSwift.jpg',
+            pptDev : 'Developer Pyae Phyo Thant',
+            inptDisabld : true
+        }
+    })
+</script>
+</html>
