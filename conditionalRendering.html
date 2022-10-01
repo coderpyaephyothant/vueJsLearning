@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional Rendering</title>
+</head>
+<body>
+    <div id="conRender">
+        <h3>{{message}}</h3>
+        <!-- <h3 v-if="status">This is Status True....</h3>
+        <h3 v-else>This is Status False....</h3> -->
+        <!-- <h2 v-if="singer == 'taylorSwift'">I am listening Taylor Swift's songs...</h2>
+        <h2 v-else-if="singer == 'lukeBryan'">I am listening Luke Bryan's songs...</h2>
+        <h2 v-else-if="singer == 'kateUrban'">I am listening Kate Urban's songs...</h2>
+        <h2 v-else>I am listening nothing...</h2> -->
+        <h3 v-show="status">i am v-show appear when status true ....</h3>
+    </div>
+</body>
+ <script src="js/vue.js"></script>
+ <script>
+    let app = new Vue({
+        el : '#conRender',
+        data : {
+            message:'hello vue.',
+            status : true,
+            singer : 'other',
+        }
+    })
+ </script>
+
+</html>
