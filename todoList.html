@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<body>
+    <div id="todoList">
+        <h3>Food List</h3>
+        <input type="text" placeholder="create name" v-model="notes.name" @keyup.enter="add()">
+            <small style="color: red" v-show="inputValidation.inputName">hey...please insert name. . . . </small>
+        <br> <br>
+        <input type="number" placeholder="create price " v-model="notes.price"  @keyup.enter="add()">
+        <small style="color: red" v-show="inputValidation.inputPrice">hey..please insert price. . . . </small>
+        <br> <br>
+        <button @click="add">Add</button>
+        <hr>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+            <tr v-for="item in items">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el:'#todoList',
+        data:{
+            notes:{
+                name:'',
+                price:'',
+            },
+            items:[],
+            inputValidation : {
+                inputName : false,
+                inputPrice : false,
+            }
+        },
+        computed:{
+
+        },
+        methods:{
+// Method 1
+            // add(){
+            //     this.items.push({
+            //         id:this.items.length + 1 ,
+            //         name:this.notes.name,
+            //         price:this.notes.price
+            //     })
+            //     this.notes.name='',
+            //     this.notes.price=''
+            // }
+// Method 2
+
+            add(){
+            // Simple If Check for inputName
+
+                // if (this.notes.name == '' ) {
+                //     this.inputValidation.inputName = true;
+                // } else {
+                //     this.inputValidation.inputName = false;
+                // }
+
+            // Tenary Operator for inputName
+                this.inputValidation.inputName = this.notes.name == '' ? true : false;
+
+            // Simple If Check for inputPrice
+
+                // if (this.notes.price == '' ) {
+                //     this.inputValidation.inputPrice = true;
+                // } else {
+                //     this.inputValidation.inputPrice = false;
+                // }
+            
+            // Tenary Operator for inputPrice
+                this.inputValidation.inputPrice = this.notes.price == '' ? true : false;
+                
+                if ((this.inputValidation.inputName == false) && (this.inputValidation.inputPrice == false)) {
+                    this.items.push({
+                        id:this.items.length + 1 ,
+                        name:this.notes.name,
+                        price:this.notes.price
+                });
+                        this.deleteAfterInsert();
+                }
+                
+            },
+            deleteAfterInsert(){
+                this.notes.name='',
+                this.notes.price=''
+            }
+        }
+    })
+</script>
+</html>

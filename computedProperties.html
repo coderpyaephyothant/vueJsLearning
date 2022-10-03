@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computed Properties</title>
+</head>
+<style>
+    .bodyColor {
+        color: rgb(77, 145, 248);
+    }
+</style>
+<body>
+    <div id="cp">
+        <h2>{{header}}</h2>
+        <h5 :class="[bodyColor]">{{body}}</h5>
+        <h3>'{{cptText}}' lenght is {{cptText.length}}.</h3>
+        <button @click="count">click for length details</button>
+        <h3>{{ getLengthWithComputed }} is Header text length.</h3>
+        <h3>{{ reverseHeaderText }} is the reverse of Header Text.</h3>
+        <h2>{{ reverseBodyText }} is the reverse of Body Text.</h2>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el:'#cp',
+
+        computed : {
+            getLengthWithComputed(){
+                return this.header.length;
+            },
+            reverseHeaderText(){
+                return this.header.split("").reverse().join(""); // sigle line method
+            },
+            reverseBodyText(){
+                let bdySplit = this.body.split("");
+                let bdyRevse = bdySplit.reverse();
+                let bdyJin = bdyRevse.join("");
+                return bdyJin; 
+            }
+        },
+
+        data:{
+            header:'Computed Properties in computed',
+            body:'Different Between Computed & Methods',
+            bodyColor:'bodyColor',
+            cptText : 'JavaScript And PHP',
+        },
+
+        methods : {
+            count(){
+                alert(this.cptText.length);
+            }
+        },
+    })
+</script>
+</html>

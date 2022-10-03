@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looping</title>
+</head>
+<style>
+    .liModify{
+        color: red;
+        list-style:none;
+    }
+</style>
+<body>
+    <div id="looping">
+        <h2>Looping</h2>
+        <input type="text" v-model="inputText">
+        <h2>Without index value </h2>
+        <ul>
+            <li :class="liModify" v-for="item in loopOne">{{item}}</li>
+        </ul>
+        <h2>With Index Value</h2>
+        <ul>
+            <li :class="liModify" v-for="(item,i) in loopOne">{{i}}. {{item}}</li>
+        </ul>
+        <h2>Object Looping</h2>
+        <table border>
+            <tr>
+                <th>ID</th>
+                <th>Company Name</th>
+                <th>Type</th>
+            </tr>
+            <tr v-for="item in loopTwo" >
+                <td>{{item.id}}</td>
+                <td>{{item.companyName}}</td>
+                <td>{{item.type}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    let app = new Vue({
+        el:'#looping',
+        data:{
+            inputText:'test for vue extension',
+            loopOne : ['MaySan Dishes', 'MaySan Young Fashion', 'MaySan Instant Foods'],
+            liModify : 'liModify',
+            loopTwo : [
+                {
+                    id : '1',
+                    companyName : 'May San',
+                    type : 'Selling Yummy Mommy Dishes'
+                },
+                {
+                    id : '2',
+                    companyName : 'May San Clothes',
+                    type : 'Selling Fashion Clothes'
+                },
+                {
+                    id : '3',
+                    companyName : 'May San Instant Foods',
+                    type : 'Selling Yummy Instant Foods'
+                }
+            ]
+        },
+        computed:{
+
+        },
+        methods:{
+
+        },
+    })
+</script>
+</html>
